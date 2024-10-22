@@ -1,11 +1,13 @@
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 
-
-const NavBar = ({ menu, menu2, menu3 }) => {
+const NavBar = ({ menu, menu2, menu3, menu4, menu5, menu6, menu7 }) => {
   return (
     <div className="text-white">
-      <h1 className="float-md-start mb-0 text-center">E-book</h1>
+      <Link to={"/"}>
+        <h1 className="float-md-start mb-0 text-center text-white">E-book</h1>
+      </Link>
+
       <nav
         className=" 
         align-items-baseline align-items-md-baseline flex-md-row flex-nowrap flex-row float-md-end justify-content-evenly nav nav-masthead "
@@ -21,24 +23,67 @@ const NavBar = ({ menu, menu2, menu3 }) => {
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a
+              <Link
                 className="nav-link bolder"
                 aria-current="page"
-                href="#"
+                to="/genero/Fantasía"
               >
                 {menu}
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="nav-link" aria-current="page" href="#">
-                {" "}
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Thriller"
+              >
                 {menu2}
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="nav-link" aria-current="page" href="#">
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Distópico"
+              >
                 {menu3}
-              </a>
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Romántico"
+              >
+                {menu4}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Religioso"
+              >
+                {menu5}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Estrategia"
+              >
+                {menu6}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="nav-link"
+                aria-current="page"
+                to="/genero/Fábula"
+              >
+                {menu7}
+              </Link>
             </li>
           </ul>
         </div>

@@ -30,8 +30,8 @@ const Item = ({ ebook }) => {
             <span className="fw-bold h1 text-dark ">{ebook.precio}</span>{" "}
           </div>
 
-          <Link to={"/detail/" + ebook.id}>
-            <ItemDetailContainer />
+          <Link className="btn btn-primary ps-5 pe-5 rounded-pill text-uppercase" to={"/detail/" + ebook.id}>
+           DETAILS
           </Link>
           
         </div>
