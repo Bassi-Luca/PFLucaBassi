@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getEbooks().then((dataEbooks) => {
-      const findEbook = dataEbooks.find((ebook) => ebook.id === 1);
+      const findEbook = dataEbooks.find((ebook) => ebook.id === parseIntidEbook);
       setEbooks(findEbook);
     });
   }, [idEbook]);
