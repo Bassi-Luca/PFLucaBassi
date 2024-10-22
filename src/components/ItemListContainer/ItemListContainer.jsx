@@ -5,15 +5,15 @@ import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ saludo }) => {
   const [ebooks, setEbooks] = useState([]);
-  const { idCategory } = useParams();
+  const { idGenero } = useParams();
 
   useEffect(() => {
     getEbooks()
       .then((dataEbooks) => {
-        if (idCategory) {
+        if (idGenero) {
           //filtramos la data por esa categoria
           const filterEbooks = dataEbooks.filter(
-            (ebook) => ebook.category === idCategory
+            (ebook) => ebook.genero === idGenero
           );
           setEbooks(filterEbooks);
         } else {
@@ -27,7 +27,7 @@ const ItemListContainer = ({ saludo }) => {
       .finally(() => {
         console.log("finalizo la promesa");
       });
-  }, [idCategory]);
+  }, [idGenero]);
 
   return (
     <div className="container mt-3 mx-auto bg-light pb-5 pt-5">

@@ -8,6 +8,7 @@ import { Footer } from "./Footer";
 const Body = () => {
   return (
     <div>
+      
       <BrowserRouter>
         <div className="container-fluid d-flex flex-column p-5 bg-danger mb-auto">
           <NavBar menu={"Home"} menu2={"Productos"} menu3={"Contactos"} />
@@ -15,13 +16,13 @@ const Body = () => {
         <div>
           <Buscador />
         </div>
-        <div className="container">
           <Routes>
-            <Route path="/" element={<ItemListContainer saludo={"saludo"} />} />
-            <Route path="/category/:idCategory" element={<ItemListContainer saludo={"Saludo"} />} />
-            <Route path="/detail/:idProduct" element={ <ItemDetailContainer /> } />
+            <div className="container">
+                <Route path="/" element={<ItemListContainer saludo={"Saludo"} />} />
+                <Route path="/genero/:idGenero" element={<ItemListContainer saludo={"Saludo"} />} />
+                <Route path="/detail/:idEbook" element={ <ItemDetailContainer /> } />
+            </div>
           </Routes>
-        </div>
         <Footer>
           <p>2024 - Coderhouse | React - Bassi Luca</p>
         </Footer>
