@@ -7,16 +7,39 @@ const NavBar = ({ menu, menu2, menu3 }) => {
         className=" 
         align-items-baseline align-items-md-baseline flex-md-row flex-nowrap flex-row float-md-end justify-content-evenly nav nav-masthead "
       >
-        <a className="nav-link text-white bolder" aria-current="page" href="#">
-          {menu}
-        </a>
-        <a className="nav-link text-white" aria-current="page" href="#">
-          {" "}
-          {menu2}
-        </a>
-        <a className="nav-link text-white" aria-current="page" href="#">
-          {menu3}
-        </a>
+        <div class="btn-group" role="group">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Filter category
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                className="nav-link bolder"
+                aria-current="page"
+                href="#"
+              >
+                {menu}
+              </a>
+            </li>
+            <li>
+              <a className="nav-link" aria-current="page" href="#">
+                {" "}
+                {menu2}
+              </a>
+            </li>
+            <li>
+              <a className="nav-link" aria-current="page" href="#">
+                {menu3}
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <CartWidget />
       </nav>
     </div>
