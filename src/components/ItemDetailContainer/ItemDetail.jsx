@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const ItemDetail = ({ebook}) => {
+const ItemDetail = ({ebook}) => {
   return (
     <div>
       <button
-        className="btn btn-primary"
+        className="margin-top btn btn-primary ps-5 pe-5 rounded-pill text-uppercase"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
