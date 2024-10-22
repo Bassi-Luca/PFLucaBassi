@@ -11,7 +11,7 @@ const Body = () => {
       {" "}
       <div className="container-fluid d-flex flex-column p-5 bg-danger mb-auto">
         {" "}
-        <NavBar menu={"Home"} menu2={"Productos"} menu3={"Contactos"} />{" "}
+        <NavBar menu={"Fantasía"} menu2={"Thriller"} menu3={"Distópico"} />{" "}
       </div>{" "}
       <div>
         <Buscador />{" "}
@@ -26,7 +26,7 @@ const Body = () => {
           path="/genero/:idGenero"
           element={<ItemListContainer saludo={"Saludo"} />}
         />{" "}
-        <Route path="/detail/:idEbook" element={<ItemDetailContainer />} />{" "}
+       
       </Routes>{" "}
       <Footer>
         <p>2024 - Coderhouse | React - Bassi Luca</p>{" "}
