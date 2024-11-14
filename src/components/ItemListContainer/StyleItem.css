@@ -1,3 +1,9 @@
-.margin-top {
+.imgCard{
+  width: 100%;
+  height: 400px;
+}
+
+.bodyCard {
     margin-top: 60px;
+    height: 70px;
   }

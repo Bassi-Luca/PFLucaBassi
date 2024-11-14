@@ -1,6 +1,7 @@
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 
+
 const NavBar = ({ menu, menu2, menu3, menu4, menu5, menu6, menu7 }) => {
   return (
     <div className="text-white">
@@ -10,18 +11,18 @@ const NavBar = ({ menu, menu2, menu3, menu4, menu5, menu6, menu7 }) => {
 
       <nav
         className=" 
-        align-items-baseline align-items-md-baseline flex-md-row flex-nowrap flex-row float-md-end justify-content-evenly nav nav-masthead "
+        align-items-baseline align-items-md-baseline flex-md-row flex-nowrap justify-content-evenly nav"
       >
-        <div class="btn-group" role="group">
+        <div className="btn-group" role="group">
           <button
             type="button"
-            class="btn btn-primary dropdown-toggle"
+            className="btn btn-primary dropdown-toggle"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             Filter category
           </button>
-          <ul class="dropdown-menu">
+          <ul className="dropdown-menu">
             <li>
               <Link
                 className="nav-link bolder"

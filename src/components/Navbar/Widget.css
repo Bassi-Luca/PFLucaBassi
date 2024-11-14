@@ -1,0 +1,18 @@
+.cartwidget{
+    width: 150%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cartwidget .icon-cartwidget{
+    font-size: 30px;
+    color: #0612f2;
+  }
+  .cartwidget .empty-cartwidget{
+    font-size: 30px;
+    color: rgb(64, 64, 64);
+  }
+  .cartwidget .number-cartwidget{
+    padding: 0 10px;
+  }
