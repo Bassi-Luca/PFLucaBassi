@@ -1,32 +1,46 @@
-import { useState, useEffect } from "react";
-import { getEbooks } from "../../data/data.js";
-import ItemList from "./ItemList.jsx";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react"
+import ItemList from "./ItemList"
+import { useParams } from "react-router-dom"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import db from "../../data/db/db"
 
 const ItemListContainer = ({ saludo }) => {
   const [ebooks, setEbooks] = useState([]);
   const { idGenero } = useParams();
 
-  useEffect(() => {
-    getEbooks()
-      .then((dataEbooks) => {
-        if (idGenero) {
-          //filtramos la data por esa categoria
-          const filterEbooks = dataEbooks.filter(
-            (ebook) => ebook.genero === idGenero
-          );
-          setEbooks(filterEbooks);
-        } else {
-          //guardamos todos los productos
-          setEbooks(dataEbooks);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        console.log("finalizo la promesa");
+  const getEbooks = () => {
+    const ebooksRef = collection(db, "Ebook");
+    getDocs(ebooksRef).then((dataDb) => {
+      //formateamos correctamente nuestros productos
+      const ebooksDb = dataDb.docs.map((ebookDb) => {
+        return { id: ebookDb.id, ...ebookDb.data() };
       });
+
+      setEbooks(ebooksDb);
+    });
+  };
+
+  const getEbooksByCategory = () => {
+    const ebooksRef = collection(db, "Ebook");
+    const queryCategories = query(
+      ebooksRef,
+      where("genero", "==", idGenero)
+    );
+    getDocs(queryCategories).then((dataDb) => {
+      const ebooksDb = dataDb.docs.map((ebookDb) => {
+        return { id: ebookDb.id, ...ebookDb.data() };
+      });
+
+      setEbooks(ebooksDb);
+    });
+  };
+
+  useEffect(() => {
+    if (idGenero) {
+      getEbooksByCategory();
+    } else {
+      getEbooks();
+    }
   }, [idGenero]);
 
   return (
@@ -37,7 +51,6 @@ const ItemListContainer = ({ saludo }) => {
         {/* Aggiungi una riga per il layout responsivo */}
         <div className="row justify-content-center">
           <div className="col-12">
-            
             <ItemList ebooks={ebooks} />
           </div>
         </div>
