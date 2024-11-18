@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-// Creiamo un contesto chiamato CartContext
+
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -20,13 +20,13 @@ const CartProvider = ({ children }) => {
   };
 
   // Controlla se un eBook è già presente nel carrello
-  const isInCart = (id) => cart.some((ebook) => ebook.id === id);
+  const isInCart = (id) => cart.some((ebook) => ebook.id === id); 
 
   // Calcola la quantità totale di eBook nel carrello
   const totalQuantity = () => cart.reduce((total, ebook) => total + ebook.quantity, 0);
 
   // Calcola il prezzo totale del carrello
-  const totalPrice = () => cart.reduce((total, ebook) => total + ebook.quantity * ebook.precio, 0);
+  const totalPrecio = () => cart.reduce((total, ebook) => total + ebook.quantity * ebook.precio, 0);
 
   // Rimuove un eBook dal carrello tramite il suo ID
   const deleteEbookById = (id) => {
@@ -39,7 +39,7 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addEbookInCart, totalQuantity, totalPrice, deleteEbookById, deleteCart }}>
+    <CartContext.Provider value={{ cart, addEbookInCart, totalQuantity, totalPrecio, deleteEbookById, deleteCart }}>
       {children}
     </CartContext.Provider>
   );

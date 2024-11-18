@@ -10,9 +10,9 @@ const CartWidget = () => {
 
   return (
     <div className="d-flex align-items-center">
-      <Link to="/cart" className="cartwidget d-flex align-items-center">
+      <Link to="/cart" className="cartwidget d-flex align-items-center">Tu carrito: 
         <PiShoppingCartBold
-          className={total > 0 ? "icon-cartwidget" : "empty-cartwidget"}
+          className={total > 0 ? "icon-cartwidget" : "empty-cartwidget"} 
         />
         {total > 0 && <p className="number-cartwidget">{total}</p>}
       </Link>

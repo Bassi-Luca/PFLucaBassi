@@ -13,7 +13,7 @@ const NavBar = ({ menu, menu2, menu3, menu4, menu5, menu6, menu7 }) => {
         className=" 
         align-items-baseline align-items-md-baseline flex-md-row flex-nowrap justify-content-evenly nav"
       >
-        <div className="btn-group" role="group">
+        <div className="btn-group w-50" role="group">
           <button
             type="button"
             className="btn btn-primary dropdown-toggle"

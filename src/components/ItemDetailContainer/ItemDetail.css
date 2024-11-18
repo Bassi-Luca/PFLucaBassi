@@ -1,0 +1,5 @@
+.offcanvas {
+    border-radius: 20px 20px 0 0; /* Angoli arrotondati nella parte superiore */
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2); /* Effetto ombra */
+  }
+  

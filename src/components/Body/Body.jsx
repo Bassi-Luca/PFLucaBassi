@@ -1,5 +1,4 @@
 import NavBar from "../../components/Navbar/NavBar";
-import Buscador from "../Buscador/Buscador";
 import ItemListContainer from "../ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -30,6 +29,7 @@ const Body = () => {
             element={<ItemListContainer saludo={"Saludo"} />}
           />
           <Route path="/detail/:idEbook" element={<ItemDetailContainer />} />
+
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>

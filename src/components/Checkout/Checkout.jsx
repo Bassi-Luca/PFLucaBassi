@@ -1,74 +1,73 @@
-import { useState } from "react"
-import FormCheckout from "./FormCheckout"
-import { useContext } from "react"
-import { CartContext } from "../Context/CartContext.jsx"
-import { Timestamp, addDoc, collection, doc, setDoc } from "firebase/firestore"
-import db from "../../data/db/db.js"
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import FormCheckout from "./FormCheckout";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext.jsx";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import db from "../../data/db/db.js";
+import { Link } from "react-router-dom";
+import ToastOut from "./ToastOut";
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
     fullname: "",
     phone: "",
     email: ""
-  })
-  const [idOrder, setIdOrder] = useState(null)
-  const { cart, totalPrice, deleteCart } = useContext(CartContext)
+  });
+  const [idOrder, setIdOrder] = useState(null);
+  const { cart, totalPrecio, deleteCart } = useContext(CartContext);
 
   const handleChangeInput = (event) => {
-    setDataForm({ ...dataForm, [event.target.name]: event.target.value })
-  }
+    setDataForm({ ...dataForm, [event.target.name]: event.target.value });
+  };
 
   const handleSubmitForm = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const order = {
       buyer: { ...dataForm },
       products: [...cart],
       date: Timestamp.fromDate(new Date()),
-      total: totalPrice()
-    }
+      total: totalPrecio()
+    };
 
-    uploadOrder(order)
-  }
+    uploadOrder(order);
+  };
 
   const uploadOrder = (newOrder) => {
-    const ordersRef = collection(db, "orders")
+    const ordersRef = collection(db, "orders");
     addDoc(ordersRef, newOrder)
-      .then((response) => setIdOrder(response.id))
+      .then((response) => {
+        setIdOrder(response.id);
+      })
       .catch((error) => console.log(error))
       .finally(() => {
-        updateStock()
-      })
-  }
+        updateStock();
+      });
+  };
 
   const updateStock = () => {
     cart.map(({ id, quantity, ...dataEbook }) => {
-      const ebookRef = doc(db, "Ebook", id)
-      setDoc(ebookRef, { ...dataEbook, dias: dataEbook.dias - quantity })
-    })
+      const ebookRef = doc(db, "Ebook", id);
+      setDoc(ebookRef, { ...dataEbook, dias: dataEbook.dias - quantity });
+    });
 
-    //una vez finalizada la actualizacion de stock, borramos el carrito
-    deleteCart()
-  }
+    // Once stock update is done, clear the cart
+    deleteCart();
+  };
 
   return (
     <div>
-      {
-        idOrder === null ? (
-          <FormCheckout
-            dataForm={dataForm}
-            handleChangeInput={handleChangeInput}
-            handleSubmitForm={handleSubmitForm} />
-        ) : (
-          <div>
-            <h2>Su orden se subio correctamente!😁</h2>
-            <p>Porfavor guarde su nro de seguimiento: {idOrder}</p>
-            <Link to="/">Volver al inicio</Link>
-          </div>
-        )
-      }
+      {idOrder ? (
+        <ToastOut idOrder={idOrder} />
+      ) : (
+        <FormCheckout
+          dataForm={dataForm}
+          handleChangeInput={handleChangeInput}
+          handleSubmitForm={handleSubmitForm}
+        />
+      )}
     </div>
-  )
-}
-export default Checkout
+  );
+};
+
+export default Checkout;

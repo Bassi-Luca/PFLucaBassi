@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Minus, Plus } from 'phosphor-react'
+import { Label, NumberInput, NumberInputBox, NumberInputButton } from 'keep-react'
 
 const ItemCount = ({ dias, addEbook }) => {
   const [count, setCount] = useState(1);
@@ -16,24 +18,28 @@ const ItemCount = ({ dias, addEbook }) => {
   };
 
   return (
-    <div
-      className="btn-group"
-      role="group"
-      aria-label="Basic mixed styles example"
-      data-pg-collapsed
-      style={{ visibility: 'visible', display: 'block' }}
-    >
-      Qtà:
-      <button onClick={handleClickRest} className="btn btn-warning">
-        -
-      </button>
-      <p className="btn btn-danger">{count}</p>
-      <button onClick={handleClickAdd} className="btn btn-success">
-        +
-      </button>
-      <button onClick={() => addEbook(count)}>Agregar al carrito</button>
+    <div >
+      <div
+        className="btn-group btn-group-lg align-items-center pb-5 pt-5"
+        role="group"
+        aria-label="Basic mixed styles example"
+      >
+        Dias:
+        <button onClick={handleClickRest} className="btn btn-warning ms-3">
+          -
+        </button>
+        <button className="btn btn-danger">{count}</button>
+        <button onClick={handleClickAdd} className="btn btn-success">
+          +
+        </button>
+      </div>
+      <div>
+        <button onClick={() => addEbook(count)} className="btn btn-primary ">
+          Agregar al carrito
+        </button>
+      </div>
     </div>
   );
-  
 };
+
 export default ItemCount;
